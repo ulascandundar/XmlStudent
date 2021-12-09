@@ -1,0 +1,90 @@
+﻿@model List<Entities.Concrete.Student>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<td>
+    <a class="btn btn-success" href="/Student/StudentAdd">Öğrenci Ekle</a>
+
+</td>
+<table id="myTable" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                TC
+            </th>
+            <th>
+                İSİM
+            </th>
+            <th>
+                SOYİSİM
+            </th>
+            <th>
+                1.Sınav
+            </th>
+            <th>
+                2.Sınav
+            </th>
+            <th>
+                3.Sınav
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exams[0])
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exams[1])
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exams[2])
+            </td>
+            <td>
+                <a id="btn2" class="btn btn-lighten-danger" href="/Student/DeleteStudent/@item.Id">Sil</a>
+
+            </td>
+            <td>
+                <a id="btn1" class="btn btn-success" href="/Student/StudentUpdate/@item.Id">Güncelle</a>
+
+            </td>
+        </tr>
+        }
+    </tbody>
+
+</table>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });//myTable is the id of the table to be displayed as dataTable
+        });
+    </script>
+    
+}

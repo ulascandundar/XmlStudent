@@ -1,0 +1,42 @@
+﻿@model Entities.DTOs.StudentAdd
+
+@{
+    ViewData["Title"] = "StudentAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Öğrenci Ekleme</h1>
+<br />
+@using (Html.BeginForm("StudentAdd", "Student", FormMethod.Post))
+{
+    @Html.Label("TC Kimlik Numarası")
+    @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
+    <br />
+    @Html.Label("İsim")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    @Html.Label("Soyisim")
+    @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+    <br />
+    @Html.Label("Birinci Sınav")
+    @Html.TextBoxFor(x => x.Exam1, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("İkinci Sınav")
+    @Html.TextBoxFor(x => x.Exam2, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Üçüncü Sınav")
+    @Html.TextBoxFor(x => x.Exam3, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.Date, new { @type = "date", @class = "form-control" })
+  
+    <br />
+    <button id="btn1" class="btn btn-info">Ekle</button>
+
+}
+
+
+

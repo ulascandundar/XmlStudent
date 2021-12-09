@@ -1,0 +1,38 @@
+﻿@model Entities.DTOs.StudentAdd
+@{
+    ViewData["Title"] = "StudentUpdate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("StudentUpdate", "Student", FormMethod.Post))
+{
+    @Html.Label("Eski Tc")
+    @Html.TextBoxFor(x => x.Tc, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    @Html.Label("TC Kimlik Numarası")
+    @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
+    <br />
+    @Html.Label("İsim")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    @Html.Label("Soyisim")
+    @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+    <br />
+    @Html.Label("Birinci Sınav")
+    @Html.TextBoxFor(x => x.Exam1, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("İkinci Sınav")
+    @Html.TextBoxFor(x => x.Exam2, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Üçüncü Sınav")
+    @Html.TextBoxFor(x => x.Exam3, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Tarih")
+    @Html.TextBoxFor(x => x.Date, new { @type = "date", @class = "form-control" })
+
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+}

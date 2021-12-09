@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!---->
+<Users>
+  <User>
+    <Id>1</Id>
+    <Name>Ulas</Name>
+    <Mail>edundarulas98@gmail.com</Mail>
+    <Fav>Köpek</Fav>
+    <Password>VSSSCW</Password>
+  </User>
+  <User>
+    <Id>2</Id>
+    <Name>Ugur</Name>
+    <Mail>edundarulas98@gmail.com</Mail>
+    <Fav>Köpek</Fav>
+    <Password>123</Password>
+  </User>
+</Users>

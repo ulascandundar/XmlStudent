@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Map";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=50b82f01-98dd-42c6-93c9-7448f4037668&lang=tr_TR" type="text/javascript">
+    </script>
+</head>
+<script type="text/javascript">
+    // The ymaps.ready() function will be called when
+    // all the API components are loaded and the DOM tree is generated.
+    ymaps.ready(init);
+    function init() {
+        // Creating the map.
+        var myMap = new ymaps.Map("map", {
+            // The map center coordinates.
+            // Default order: “latitude, longitude”.
+            // To not manually determine the map center coordinates,
+            // use the Coordinate detection tool.
+            center: [55.76, 37.64],
+            // Zoom level. Acceptable values:
+            // from 0 (the entire world) to 19.
+            zoom: 7
+        });
+    }
+</script>
+<body>
+    <div id="map" style="width: 600px; height: 400px"></div>
+
+    <div style="position:relative;overflow:hidden;"><a href="https://yandex.com.tr/harita/org/ekobim_yazilim/1104606236/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Ekobim Yazılım</a><a href="https://yandex.com.tr/harita/115713/bayrakli/category/software_companies/184105776/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Bayraklı için Yazılım firmaları</a><iframe src="https://yandex.com.tr/map-widget/v1/-/CCUu7LXDhD" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+</body>
