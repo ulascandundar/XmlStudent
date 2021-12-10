@@ -58,7 +58,7 @@ namespace UI.Controllers
         {
             _studentService.Update(studentAdd);
 
-            return Ok(RedirectToAction("Index")); 
+            return RedirectToAction("Index");
         }
         public IActionResult DeleteStudent(string id)
         {

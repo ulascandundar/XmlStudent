@@ -3,6 +3,7 @@ using Entities.DTOs;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,7 @@ namespace UI.Controllers
                 ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
                 await HttpContext.SignInAsync(principal);
                 ViewBag.user = userForLoginDto.Name;
+                HttpContext.Session.SetString("Name",userForLoginDto.Name);
                 return RedirectToAction("Index", "Student");
 
 

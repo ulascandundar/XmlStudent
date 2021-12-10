@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,11 @@ namespace UI.Controllers
             decimal euro = Convert.ToDecimal(xmlVerisi.SelectSingleNode(string.Format("Tarih_Date/Currency[@Kod='{0}']/ForexSelling", "EUR")).InnerText.Replace('.', ','));
             ViewBag.dolar = dolar;
             ViewBag.euro = euro;
+            return View();
+        }
+        public IActionResult Chat()
+        {
+            ViewBag.kullanici = HttpContext.Session.GetString("Name");
             return View();
         }
     }

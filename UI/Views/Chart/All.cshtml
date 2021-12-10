@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewData["Title"] = "All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Result Visualization</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                url: '@Url.Action("VisualizeProductResult", "Chart")',
+                success: function (result) {
+                    google.charts.load('current', {
+                        'packages': ['corechart']
+                    });
+                    google.charts.setOnLoadCallback(function () {
+                        drawChart(result);
+                    });
+                }
+            });
+        });
+
+        function drawChart(result) {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'İsim');
+            data.addColumn('number', 'Ortalama');
+            var dataArray = [];
+
+            $.each(result, function (i, obj) {
+                dataArray.push([obj.name, obj.exams]);
+            });
+            data.addRows(dataArray);
+
+            var columnChartOptions = {
+                title: "Öğrenci - Not ortalaması Grafiği",
+                width: 500,
+                height: 200,
+                bar: { groupWidth: "20%" },
+            };
+
+            var columnChart = new google.visualization.PieChart(document
+                .getElementById('Piechart_div'));
+
+            columnChart.draw(data, columnChartOptions);
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                url: '@Url.Action("VisualizeProductResult2", "Chart")',
+                success: function (result) {
+                    google.charts.load('current', {
+                        'packages': ['corechart']
+                    });
+                    google.charts.setOnLoadCallback(function () {
+                        drawChart1(result);
+                    });
+                }
+            });
+        });
+
+        function drawChart1(result) {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Sonuç');
+            data.addColumn('number', 'Ortalama');
+            var dataArray = [];
+
+            $.each(result, function (i, obj) {
+                dataArray.push([obj.name, obj.exams]);
+            });
+            data.addRows(dataArray);
+
+            var columnChartOptions = {
+                title: "Öğrenci - Not ortalaması Grafiği",
+                width: 500,
+                height: 200,
+                bar: { groupWidth: "20%" },
+            };
+
+            var columnChart = new google.visualization.PieChart(document
+                .getElementById('Piechart1_div'));
+
+            columnChart.draw(data, columnChartOptions);
+        }
+    </script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card-box">
+                <i class="fa fa-info-circle text-muted float-right inform" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Sisteme Kayıtlı Toplam Öğrenci Sayısını Gösterir."></i>
+                <h6 class="mt-0 text-dark">Toplam Öğrenci Sayısı</h6>
+                <h2 class="text-primary text-center mt-4 mb-4"><span>@ViewBag.d1</span></h2>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card-box">
+                <i class="fa fa-info-circle text-muted float-right inform" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="3 Sınavın Sonuçlarının Ortalaması alınması ile ortaya çıkan ortalamalar içinde en başarısız öğrenciyi gösterir"></i>
+                <h6 class="mt-0 text-dark">Ortalaması En Yüksek Öprenci</h6>
+                <h2 class="text-pink text-center mt-4 mb-4"><span>@ViewBag.d2</span></h2>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card-box">
+                <i class="fa fa-info-circle text-muted float-right inform" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="3 Sınavın Sonuçlarının Ortalaması alınması ile ortaya çıkan ortalamalar içinde en başarılı öğrenciyi gösterir"></i>
+                <h6 class="mt-0 text-dark">Ortalaması En Düşük Öğrenci</h6>
+                <h2 class="text-success text-center mt-4 mb-4"><span>@ViewBag.d3</span></h2>
+            </div>
+        </div>
+    </div>
+   
+        <div class="row">
+            <div id="Piechart_div"></div>
+            <div id="Piechart1_div"></div>
+        </div>
+    
+   
+</body>
+</html>
+
+
+

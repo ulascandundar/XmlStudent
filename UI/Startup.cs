@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using UI.Hubs;
 
 namespace UI
 {
@@ -54,6 +55,7 @@ namespace UI
                                .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
+            services.AddSession();
 
         }
 
@@ -88,13 +90,20 @@ namespace UI
             //    endpoints.MapHub<ChatHub>("/chatHub");
             //});
 
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                      name: "default",
                      template: "{controller=Student}/{action=Index}/{id?}");
             });
+            
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<ChatHub>("/chatHub");
+            });
+
         }
     }
 }

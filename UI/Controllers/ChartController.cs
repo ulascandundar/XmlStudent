@@ -46,6 +46,20 @@ namespace UI.Controllers
             ViewBag.d3 = cs.OrderBy(s => s.exams).Select(u => u.name).FirstOrDefault();
             return View();
         }
+        public IActionResult All()
+        {
+
+            ViewBag.d1 = _studentService.GetAll().Data.Count();
+            List<Class1> cs = new List<Class1>();
+            cs = _studentService.GetAll().Data.Select(p => new Class1
+            {
+                name = p.Name,
+                exams = p.Exams.Select(s => Int32.TryParse(s, out int n) ? n : (int?)null).Where(n => n.HasValue).Select(n => n.Value).ToList().Average()
+            }).ToList();
+            ViewBag.d2 = cs.OrderByDescending(s => s.exams).Select(u => u.name).FirstOrDefault();
+            ViewBag.d3 = cs.OrderBy(s => s.exams).Select(u => u.name).FirstOrDefault();
+            return View();
+        }
 
         public IActionResult Map()
         {
