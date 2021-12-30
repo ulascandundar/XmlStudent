@@ -19,5 +19,7 @@ namespace Business.Abstract
         IResult Delete(string id);
 
         public IDataResult<Student> Get(string id);
+
+        public IResult AddAdress(string id, string enlem, string boylam);
     }
 }

@@ -1,8 +1,10 @@
-﻿using Business.Abstract;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Business.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using UI.Data;
 
@@ -11,10 +13,11 @@ namespace UI.Controllers
     public class ChartController : Controller
     {
         IStudentService _studentService;
-
-        public ChartController(IStudentService studentService)
+        readonly INotyfService _notyfService;
+        public ChartController(IStudentService studentService, INotyfService notyfService)
         {
             this._studentService = studentService;
+            _notyfService = notyfService;
         }
 
         public IActionResult Index()
@@ -64,6 +67,25 @@ namespace UI.Controllers
         public IActionResult Map()
         {
             return View();
+        }
+        public IActionResult Map2()
+        {
+            ViewBag.error2 = false;
+            ViewBag.kullanici = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Map2(string id, string Enlem, string Boylam)
+        {
+            //string id = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var result = _studentService.AddAdress(id, Enlem, Boylam);
+            if (result.Success==false)
+            {
+                ViewBag.error2 = true;
+                return View();
+            }
+            _notyfService.Success("Adres Bilgisi Eklendi");
+            return RedirectToAction("Index");
         }
         public IActionResult VisualizeProductResult()
         {

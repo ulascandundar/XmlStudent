@@ -32,6 +32,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
+        [Produces("application/xml")]
         public IActionResult GetAll()
         {
             var result = _studentService.GetAll();
@@ -75,6 +76,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("get")]
+        [Produces("application/xml")]
         public IActionResult Get(string id)
         {
             var result = _studentService.Get(id);

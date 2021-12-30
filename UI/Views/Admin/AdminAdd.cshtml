@@ -1,0 +1,37 @@
+﻿@model Core.Entities.Concrete.SystemUser
+
+@{
+    ViewData["Title"] = "AdminAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AdminAdd", "Admin", FormMethod.Post))
+{
+    @Html.Label("TC Kimlik Numarası")
+    @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @required = "required" })
+    <br />
+    @Html.Label("İsim")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @required = "required" })
+    <br />
+    @Html.Label("Mail")
+    @Html.TextBoxFor(x => x.Mail, new { @type = "email", @class = "form-control", @required = "required" })
+    <br />
+    @Html.Label("Favori hayvanınız")
+    @Html.TextBoxFor(x => x.Fav, new { @class = "form-control", @required = "required" })
+    <br />
+
+    @Html.Label("Şifreniz")
+    @Html.TextBoxFor(x => x.Password, new { @type = "password", @class = "form-control", @required = "required" })
+    <br />
+
+    @Html.Label("Süper Admin Özelliği Var")
+    @Html.RadioButtonFor(x => x.Super, "true", new { @class = "form-control" })
+    <br />
+    @Html.Label("Süper Admin Özelliği Yok")
+    @Html.RadioButtonFor(x => x.Super, "false", new { @class = "form-control" })
+    <br />
+
+
+    <button id="btn1" class="btn btn-info">Ekle</button>
+
+}

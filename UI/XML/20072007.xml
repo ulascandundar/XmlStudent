@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!---->
+<Students>
+  <Student>
+    <Id>20072007</Id>
+    <Name>Efe Çınar </Name>
+    <Surname>Işuk</Surname>
+    <Exams>70,80,90</Exams>
+    <Date>12.22.2021</Date>
+    <Hour>22.12.2021 02:02:02</Hour>
+    <Enlem>38.42048</Enlem>
+    <Boylam>27.1613952</Boylam>
+  </Student>
+</Students>

@@ -13,6 +13,8 @@ namespace Entities.Concrete
         public string Tc { get; set; }
         public List<string> Exams { get; set; }
         public string Date { get; set; }
-        
+        public string Enlem { get; set; }
+        public string Boylam { get; set; }
+
     }
 }

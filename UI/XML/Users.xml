@@ -6,7 +6,9 @@
     <Name>Ulas</Name>
     <Mail>edundarulas98@gmail.com</Mail>
     <Fav>Köpek</Fav>
-    <Password>L8AL1J</Password>
+    <Password>123</Password>
+    <Super>False</Super>
+    <Type>Admin</Type>
   </User>
   <User>
     <Id>2</Id>
@@ -14,5 +16,25 @@
     <Mail>edundarulas98@gmail.com</Mail>
     <Fav>Köpek</Fav>
     <Password>123</Password>
+    <Super>False</Super>
+    <Type>Admin</Type>
+  </User>
+  <User>
+    <Id>123456</Id>
+    <Name>Ulaş Can Dündar</Name>
+    <Mail>adamsimit1881@gmail.com</Mail>
+    <Fav>Köpek</Fav>
+    <Password>123</Password>
+    <Super>True</Super>
+    <Type>Admin</Type>
+  </User>
+  <User>
+    <Id>20072007</Id>
+    <Name>Efe Çınar Işuk</Name>
+    <Mail>adamsimit1881@gmail.com</Mail>
+    <Fav>Köpek</Fav>
+    <Password>123</Password>
+    <Super>False</Super>
+    <Type>User</Type>
   </User>
 </Users>

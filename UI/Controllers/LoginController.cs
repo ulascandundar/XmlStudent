@@ -1,4 +1,5 @@
-﻿using Business.Abstract;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Business.Abstract;
 using Entities.DTOs;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -16,11 +17,11 @@ namespace UI.Controllers
     public class LoginController : Controller
     {
         IAuthService _authService;
-
-        public LoginController(IAuthService authService)
+        readonly INotyfService _notyfService;
+        public LoginController(IAuthService authService, INotyfService notyfService)
         {
             _authService = authService;
-
+            _notyfService = notyfService;
         }
         [AllowAnonymous]
         [HttpGet]
@@ -34,12 +35,14 @@ namespace UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(UserForLoginDto userForLoginDto)
         {
-            var result = _authService.Login(userForLoginDto).Success;
-            if (result)
+            var result = _authService.Login(userForLoginDto);
+            if (result.Success && result.Data.Type=="Admin")
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name,userForLoginDto.Name)
+                    new Claim(ClaimTypes.Name,userForLoginDto.Name),
+                    new Claim(ClaimTypes.NameIdentifier,result.Data.Id),
+                    new Claim(ClaimTypes.Role,result.Data.Type)
                 };
                 
                 var userIdentity = new ClaimsIdentity(claims, "Login");
@@ -47,12 +50,48 @@ namespace UI.Controllers
                 await HttpContext.SignInAsync(principal);
                 ViewBag.user = userForLoginDto.Name;
                 HttpContext.Session.SetString("Name",userForLoginDto.Name);
+                _notyfService.Success("Hoşgeldiniz");
                 return RedirectToAction("Index", "Student");
 
 
             }
             ViewBag.deactive = false;
             ViewBag.error = true;
+            _notyfService.Error("Bilgileriniz yanlış");
+            return View();
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult StudentLogin()
+        {
+            return View();
+        }
+        [AllowAnonymous]
+        [HttpPost]
+        public async Task<IActionResult> StudentLogin(UserForLoginDto userForLoginDto)
+        {
+            var result = _authService.Login(userForLoginDto);
+            if (result.Success&&result.Data.Type=="User")
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name,userForLoginDto.Name),
+                    new Claim(ClaimTypes.NameIdentifier,result.Data.Id),
+                    new Claim(ClaimTypes.Role,result.Data.Type)
+                };
+
+                var userIdentity = new ClaimsIdentity(claims, "Login");
+                ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
+                await HttpContext.SignInAsync(principal);
+                ViewBag.user = userForLoginDto.Name;
+                HttpContext.Session.SetString("Name", userForLoginDto.Name);
+                _notyfService.Success("Hoşgeldiniz");
+                return RedirectToAction("Index", "StudentPanel");
+
+
+            }
+            _notyfService.Error("Bilgileriniz yanlış");
             return View();
         }
         [AllowAnonymous]

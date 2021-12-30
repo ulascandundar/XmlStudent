@@ -7,6 +7,15 @@
 
 <h1>Öğrenci Ekleme</h1>
 <br />
+@if (ViewBag.error1)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Bu öğrenci zaten var</strong> Bu tc ile kayıtlı öğrenci zaten var
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
 @using (Html.BeginForm("StudentAdd", "Student", FormMethod.Post))
 {
     @Html.Label("TC Kimlik Numarası")
@@ -19,20 +28,20 @@
     @Html.TextBoxFor(x => x.Surname, new { @class = "form-control", @required = "required" })
     <br />
     @Html.Label("Birinci Sınav")
-    @Html.TextBoxFor(x => x.Exam1, new { @class = "form-control", @required = "required" })
+    @Html.TextBoxFor(x => x.Exam1, new { @type = "number", @class = "form-control", @required = "required" })
     <br />
 
     @Html.Label("İkinci Sınav")
-    @Html.TextBoxFor(x => x.Exam2, new { @class = "form-control", @required = "required" })
+    @Html.TextBoxFor(x => x.Exam2, new { @type = "number", @class = "form-control", @required = "required" })
     <br />
 
     @Html.Label("Üçüncü Sınav")
-    @Html.TextBoxFor(x => x.Exam3, new { @class = "form-control", @required = "required" })
+    @Html.TextBoxFor(x => x.Exam3, new { @type = "number", @class = "form-control", @required = "required" })
     <br />
 
     @Html.Label("Tarih")
     @Html.TextBoxFor(x => x.Date, new { @type = "date", @class = "form-control", @required = "required" })
-  
+
     <br />
     <button id="btn1" class="btn btn-info">Ekle</button>
 

@@ -20,5 +20,7 @@ namespace DataAccess.Abstract
         public void Delete(string id);
 
         public void Update(Student student);
+
+        public void AddAdress(string id, string enlem, string boylam);
     }
 }

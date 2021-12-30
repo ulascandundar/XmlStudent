@@ -1,1 +1,14 @@
-﻿<!----><Students><Student><Id>123456</Id><Name>Yağmur</Name><Surname>Duvarcı</Surname><Exams>60,70,80</Exams><Date>11.29.2021</Date><Hour>29.11.2021 05:16:29</Hour></Student></Students>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!---->
+<Students>
+  <Student>
+    <Id>123456</Id>
+    <Name>Yağmur</Name>
+    <Surname>Duvarcı</Surname>
+    <Exams>65,70,80</Exams>
+    <Date>2021-12-12</Date>
+    <Hour>12.12.2021 00:10:19</Hour>
+    <Enlem>38.42048</Enlem>
+    <Boylam>27.1613952</Boylam>
+  </Student>
+</Students>

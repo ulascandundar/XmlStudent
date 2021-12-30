@@ -6,17 +6,17 @@
 <div class="container">
     <div class="row">&nbsp;</div>
     <div class="row">
-        <div class="col-2">User</div>
-        <div class="col-4"><input type="text" value=@ViewBag.kullanici id="userInput" /></div>
+        <div class="col-2">Kullanıcı</div>
+        <div class="col-4"><input type="text" disabled value=@ViewBag.kullanici  id="userInput" /></div>
     </div>
     <div class="row">
-        <div class="col-2">Message</div>
-        <div class="col-4"><input type="text" id="messageInput" /></div>
+        <div class="col-2">Mesaj</div>
+        <div class="col-4"><input required type="text" id="messageInput" /></div>
     </div>
     <div class="row">&nbsp;</div>
     <div class="row">
         <div class="col-6">
-            <input type="button" id="sendButton" value="Send Message" />
+            <input type="button" id="sendButton" value="Mesaj Gönder" />
         </div>
     </div>
 </div>
@@ -27,6 +27,12 @@
 </div>
 <div class="row">
     <div class="col-6">
+        <div class="alert alert-success text-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <ul id="messagesList"></ul>
+        </div>
         <ul id="messagesList"></ul>
     </div>
 </div>

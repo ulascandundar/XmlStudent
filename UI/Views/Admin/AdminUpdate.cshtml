@@ -1,0 +1,35 @@
+﻿@model Core.Entities.Concrete.SystemUser
+@{
+    ViewData["Title"] = "AdminUpdate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AdminUpdate", "Admin", FormMethod.Post))
+{
+
+    @Html.Label("TC Kimlik Numarası")
+    @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @required = "required" })
+    <br />
+    @Html.Label("İsim")
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @required = "required" })
+    <br />
+    @Html.Label("Email")
+    @Html.TextBoxFor(x => x.Mail, new { @type = "email", @class = "form-control", @required = "required" })
+    <br />
+    @Html.Label("Şifre")
+    @Html.TextBoxFor(x => x.Password, new { @type = "password", @class = "form-control", @required = "required" })
+    <br />
+    @Html.Label("Süper Admin Özelliği Var")
+    @Html.RadioButtonFor(x => x.Super, "true", new { @class = "form-control" })
+    <br />
+    @Html.Label("Süper Admin Özelliği Yok")
+    @Html.RadioButtonFor(x => x.Super, "false", new { @class = "form-control" })
+    <br />
+    @Html.Label("Favori hayvanınız")
+    @Html.TextBoxFor(x => x.Fav, new { @class = "form-control", @required = "required" })
+
+
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+}
+

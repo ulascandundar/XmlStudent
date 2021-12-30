@@ -1,1 +1,14 @@
-﻿<!----><Students><Student><Id>223432</Id><Name>Ulaş</Name><Surname>Dündar</Surname><Exams>70,85,90</Exams><Date>2021-12-09</Date><Hour>9.12.2021 17:49:23</Hour></Student></Students>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!---->
+<Students>
+  <Student>
+    <Id>223432</Id>
+    <Name>Ulaş Can</Name>
+    <Surname>Dündar</Surname>
+    <Exams>99,88,77</Exams>
+    <Date>2021-12-13</Date>
+    <Hour>13.12.2021 20:33:58</Hour>
+    <Enlem>38.3989199</Enlem>
+    <Boylam>27.1878852</Boylam>
+  </Student>
+</Students>

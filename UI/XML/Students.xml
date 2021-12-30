@@ -2,38 +2,31 @@
 <!---->
 <Students>
   <Student>
-    <Id>55556</Id>
-    <Name>Doğucan</Name>
-    <Surname>Bayram</Surname>
-    <Exams>77,55,55</Exams>
-    <Date>2021-11-29</Date>
-  </Student>
-  <Student>
-    <Id>223432</Id>
-    <Name>Ulaş</Name>
-    <Surname>Dündar</Surname>
-    <Exams>70,85,90</Exams>
-    <Date>2021-12-09</Date>
-  </Student>
-  <Student>
     <Id>123456</Id>
     <Name>Yağmur</Name>
     <Surname>Duvarcı</Surname>
-    <Exams>60,70,80</Exams>
-    <Date>2021-11-29</Date>
+    <Exams>65,70,80</Exams>
+    <Date>2021-12-12</Date>
+    <Hour>12.12.2021 00:10:19</Hour>
+    <Enlem>38.42048</Enlem>
+    <Boylam>27.1613952</Boylam>
   </Student>
   <Student>
-    <Id>604604</Id>
-    <Name>Emine</Name>
+    <Id>223432</Id>
+    <Name>Ulaş Can</Name>
     <Surname>Dündar</Surname>
-    <Exams>55,66,77</Exams>
-    <Date>2021-11-29</Date>
+    <Exams>99,88,77</Exams>
+    <Date>2021-12-13</Date>
+    <Enlem>38.3989199</Enlem>
+    <Boylam>27.1878852</Boylam>
   </Student>
   <Student>
-    <Id>000000000000</Id>
-    <Name>Doğucan</Name>
-    <Surname>Bayram</Surname>
-    <Exams>0,10,20</Exams>
-    <Date>2021-12-09</Date>
+    <Id>20072007</Id>
+    <Name>Efe Çınar </Name>
+    <Surname>Işuk</Surname>
+    <Exams>70,80,90</Exams>
+    <Date>2021-12-22</Date>
+    <Enlem>38.42048</Enlem>
+    <Boylam>27.1613952</Boylam>
   </Student>
 </Students>

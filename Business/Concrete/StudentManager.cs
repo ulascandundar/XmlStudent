@@ -81,6 +81,16 @@ namespace Business.Concrete
             return new SuccessDataResult<Student>(student);
         }
 
+        public IResult AddAdress(string id, string enlem, string boylam)
+        {
+            var user = Get(id);
+            if (user.Data==null)
+            {
+                return new ErrorResult("Böyle bir kullanıcı yok");
+            }
+            _studentDal.AddAdress(id, enlem, boylam);
+            return new SuccessResult("Başarıyla eklendi");
+        }
 
 
 

@@ -29,14 +29,13 @@ namespace Business.Concrete
         public IDataResult<SystemUser> Login(UserForLoginDto userForLoginDto)
         {
              var check=_authsDal.Login(userForLoginDto);
-            if (!check)
+            if (check==null)
             {
                 return new ErrorDataResult<SystemUser>("Yanlış deneme");
             }
 
-            var datas = _authsDal.GetAll();
-           var result= datas.FirstOrDefault(u => u.Name == userForLoginDto.Name);
-            return new SuccessDataResult<SystemUser>(result);
+            
+            return new SuccessDataResult<SystemUser>(check);
 
         }
 
@@ -86,6 +85,36 @@ namespace Business.Concrete
             }
             return new SuccessResult("Şifre değiştirildi");
             
+        }
+
+        public IDataResult<List<SystemUser>> GetAll()
+        {
+            var result = _authsDal.GetAll();
+            return new SuccessDataResult<List<SystemUser>>(result);
+        }
+
+        public IResult Add(SystemUser systemUser)
+        {
+            var users= _authsDal.GetAll();
+            var user = users.FirstOrDefault(u => u.Id == systemUser.Id);
+            if (user != null)
+            {
+                return new ErrorResult("Belirttiğiniz TC daha önce kullanılmıştır");
+            }
+            _authsDal.Add(systemUser);
+            return new SuccessResult();
+        }
+
+        public IResult Delete(string id)
+        {
+            _authsDal.Delete(id);
+            return new SuccessResult("Silindi");
+        }
+
+        public IResult Update(SystemUser systemUser)
+        {
+            _authsDal.Update(systemUser);
+            return new SuccessResult("Güncellendi");
         }
     }
 }

@@ -12,5 +12,7 @@ namespace Core.Entities.Concrete
         public string Password { get; set; }
         public string Mail { get; set; }
         public string Fav { get; set; }
+        public bool Super { get; set; }
+        public string Type { get; set; }
     }
 }

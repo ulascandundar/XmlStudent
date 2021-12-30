@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Xml;
 
@@ -22,7 +23,7 @@ namespace UI.Controllers
         }
         public IActionResult Chat()
         {
-            ViewBag.kullanici = HttpContext.Session.GetString("Name");
+            ViewBag.kullanici = HttpContext.User.FindFirst(ClaimTypes.Name).Value;
             return View();
         }
     }

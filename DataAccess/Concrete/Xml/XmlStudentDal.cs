@@ -36,7 +36,9 @@ namespace DataAccess.Concrete.Xml
                 new XElement("Name", student.Name),
                 new XElement("Surname", student.Surname),
                 new XElement("Exams", examps),
-                new XElement("Date",date1)
+                new XElement("Date",date1),
+                new XElement("Enlem", ""),
+                new XElement("Boylam", "")
                 ));
             xDocument.Save(@"XML\Students.xml");
 
@@ -53,6 +55,8 @@ namespace DataAccess.Concrete.Xml
             xmlText.WriteElementString("Exams", examps);
             xmlText.WriteElementString("Date", DateTime.Now.ToString("MM/dd/yyyy"));
             xmlText.WriteElementString("Hour", DateTime.Now.ToString());
+            xmlText.WriteElementString("Enlem", "");
+            xmlText.WriteElementString("Boylam", "");
             xmlText.WriteEndElement();
             xmlText.Close();
         }
@@ -140,6 +144,26 @@ namespace DataAccess.Concrete.Xml
                                     }
                 }
                 
+            }
+        }
+        public void AddAdress(string id,string enlem, string boylam)
+        {
+            XDocument xDocument = XDocument.Load(@"XML\Students.xml");
+            XElement node = xDocument.Root.Elements().Where(s => s.Element("Id").Value == id).FirstOrDefault();
+            if (node != null)
+            {
+                node.SetElementValue("Enlem", enlem);
+                node.SetElementValue("Boylam", boylam);
+                xDocument.Save(@"XML\Students.xml");
+            }
+            XDocument xDocument1 = XDocument.Load(@"XML\"+id+".xml");
+            XElement node1 = xDocument1.Root.Elements().Where(s => s.Element("Id").Value == id).FirstOrDefault();
+
+            if (node1 != null)
+            {
+                node1.SetElementValue("Enlem", enlem);
+                node1.SetElementValue("Boylam", boylam);
+                xDocument1.Save(@"XML\"+id+".xml");
             }
         }
     }

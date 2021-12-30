@@ -16,5 +16,10 @@ namespace Business.Abstract
 
         public IDataResult<AccessToken> CreateAccessToken(SystemUser user);
         public IResult PasswordRefresh(string email, string fav);
+        public IDataResult<List<SystemUser>> GetAll();
+        public IResult Add(SystemUser systemUser);
+        public IResult Delete(string id);
+        public IResult Update(SystemUser systemUser);
+
     }
 }
